@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>com.bicomsystems.communicator-next</id>
+  <name>Communicator Next</name>
+  <project_license>GPL-3.0+</project_license>
+  <metadata_license>CC0-1.0</metadata_license>
+  <summary>Communicator Next SIP client</summary>
+  <developer id="com.bicomsystems">
+    <name>Bicom Systems</name>
+  </developer>
+  <description>
+    <p>
+      Communicator is not just a communication tool, it's a comprehensive Unified Communications app that seamlessly integrates voice, video, chat, file sharing, and collaboration features.
+    </p>
+  </description>
+
+  <launchable type="desktop-id">com.bicomsystems.communicator-next.desktop</launchable>
+
+  <url type="homepage">https://www.bicomsystems.com/</url>
+  <url type="bugtracker">https://www.bicomsystems.com/</url>
+  <url type="help">https://www.bicomsystems.com/</url>
+
+  <provides>
+    <binary>communicator-next</binary>
+  </provides>
+
+  <releases>
+    <release version="8.0.0" date="2026-04-27" />
+  </releases>
+
+  <content_rating type="oars-1.1" />
+</component>

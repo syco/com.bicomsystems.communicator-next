@@ -1,0 +1,68 @@
+{
+  "id": "com.bicomsystems.communicator-next",
+  "command": "/app/bin/start-communicator",
+  "separate-locales": false,
+  "runtime": "org.freedesktop.Platform",
+  "runtime-version": "25.08",
+  "base": "org.electronjs.Electron2.BaseApp",
+  "base-version": "25.08",
+  "sdk": "org.freedesktop.Sdk",
+  "finish-args": [
+    "--device=all",
+    "--filesystem=home",
+    "--share=ipc",
+    "--share=network",
+    "--socket=pulseaudio",
+    "--socket=x11",
+    "--talk-name=org.freedesktop.Notifications",
+    "--talk-name=org.gtk.Notifications",
+    "--talk-name=org.kde.StatusNotifierWatcher"
+  ],
+  "modules": [
+    {
+      "name": "communicator-next",
+      "sources": [
+        {
+          "type": "file",
+          "url": "https://downloads.bicomsystems.com/glocom-next/public/communicator/8.0.0/Communicator-Next-8.0.0-amd64.deb",
+          "dest-filename": "Communicator.deb",
+          "sha256": "fd5da0cd77b602693fa37f64c4ff7826b95475fc1296493087e81df36c216d1b"
+        },
+        {
+          "type": "file",
+          "path": "com.bicomsystems.communicator-next.desktop"
+        },
+        {
+          "type": "file",
+          "path": "com.bicomsystems.communicator-next.png"
+        },
+        {
+          "type": "file",
+          "path": "com.bicomsystems.communicator-next.metainfo.xml"
+        },
+        {
+          "type": "script",
+          "dest-filename": "start-communicator",
+          "commands": [
+            "exec zypak-wrapper /app/communicator/communicator-next \"$@\""
+          ]
+        }
+      ],
+      "buildsystem": "simple",
+      "build-commands": [
+        "ar x Communicator.deb",
+        "mkdir -p /app/communicator",
+        "tar xf data.tar.xz --strip-components=3 -C /app/communicator",
+        "rm -Rf Communicator.deb control.tar.gz data.tar.xz debian-binary",
+        "chmod -R 755 /app/communicator"
+      ],
+      "post-install": [
+        "install -Dm755 start-communicator ${FLATPAK_DEST}/bin/start-communicator",
+        "install -Dm644 ${FLATPAK_ID}.metainfo.xml /app/share/metainfo/${FLATPAK_ID}.metainfo.xml",
+        "install -Dm644 ${FLATPAK_ID}.desktop /app/share/applications/${FLATPAK_ID}.desktop",
+        "install -Dm644 ${FLATPAK_ID}.png /app/share/icons/hicolor/512x512/apps/${FLATPAK_ID}.png",
+        "install -Dm644 ${FLATPAK_ID}.png /app/usr/share/icons/${FLATPAK_ID}.png"
+      ]
+    }
+  ]
+}

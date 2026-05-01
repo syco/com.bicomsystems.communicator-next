@@ -1,0 +1,13 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Name=Communicator Next
+GenericName=Communicator Next SIP client
+Comment=Fully featured, easy to use SIP client with a Qt based UI
+X-GNOME-FullName=Communicator Next SIP client
+Type=Application
+Exec=/app/bin/communicator-next %u
+Icon=com.bicomsystems.communicator-next
+StartupWMClass=Communicator
+StartupNotify=false
+Terminal=false
+Categories=Qt;Network;Telephony;
